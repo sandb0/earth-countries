@@ -11,3 +11,6 @@ yarn*
 
 # misc
 .env.*
+.husky
+.editorconfig
+*ignore
