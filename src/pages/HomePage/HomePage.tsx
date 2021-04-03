@@ -22,11 +22,20 @@ const HomePage: React.FC<Props> = (props: Props) => {
   );
 
   useEffect(() => {
-    dispatch(presenter.findAll());
+    (async () => {
+      dispatch(await presenter.findAll());
+    })();
   }, [dispatch]);
 
   const cardsCountriesComponents = countries.map(
-    (country: Country, index: number) => <CardCountryComponent key={index} />
+    (country: Country, index: number) => (
+      <CardCountryComponent
+        key={index}
+        name={country.name}
+        flagSVG={country.flag.svgFile}
+        capital={country.capital}
+      />
+    )
   );
 
   return (

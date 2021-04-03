@@ -10,7 +10,7 @@ yarn*
 /build
 
 # misc
-.env.*
+.env
 /.husky
 .editorconfig
 *ignore

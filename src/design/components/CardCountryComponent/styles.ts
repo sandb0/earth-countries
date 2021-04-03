@@ -60,7 +60,13 @@ export const ContainerStyled = styled.div`
 export const ThumbnailStyled = styled.div`
   img {
     width: 100%;
+    min-height: 150px;
+    max-height: 150px;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
+
+    @media only screen and (max-width: 1024px) {
+      max-height: 200px;
+    }
   }
 `;
