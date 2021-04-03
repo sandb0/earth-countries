@@ -15,6 +15,12 @@ export const SearchContainerStyled = styled.div`
   padding: 15px 30px;
   display: flex;
   justify-content: space-between;
+  transition: all 0.3s;
+
+  &.onFocus {
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+  }
 `;
 
 export const InputStyled = styled.input`

@@ -1,11 +1,34 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+import Country from '../../core/domain/Country';
+import CountryPresenter from '../../core/infrastructure/Presenters/CountryPresenter';
+import { CountryReduxStore } from '../../core/infrastructure/StateManagers/Redux/CountryRedux';
 
 import { SearchComponent, CardCountryComponent } from '../../design/components';
 import { HeaderSection } from '../../design/sections';
 
 import { ContainerStyled, CardsCountriesContainerStyled } from './styles';
 
-const HomePage: React.FC = () => {
+type Props = {
+  presenter: CountryPresenter;
+};
+
+const HomePage: React.FC<Props> = (props: Props) => {
+  const { presenter } = props;
+  const dispatch = useDispatch();
+  const countries = useSelector(
+    (state: CountryReduxStore) => state.country.countries
+  );
+
+  useEffect(() => {
+    dispatch(presenter.findAll());
+  }, [dispatch]);
+
+  const cardsCountriesComponents = countries.map(
+    (country: Country, index: number) => <CardCountryComponent key={index} />
+  );
+
   return (
     <ContainerStyled>
       <HeaderSection />
@@ -14,13 +37,7 @@ const HomePage: React.FC = () => {
         <SearchComponent />
 
         <CardsCountriesContainerStyled>
-          <CardCountryComponent />
-          <CardCountryComponent />
-          <CardCountryComponent />
-          <CardCountryComponent />
-          <CardCountryComponent />
-          <CardCountryComponent />
-          <CardCountryComponent />
+          {cardsCountriesComponents}
         </CardsCountriesContainerStyled>
       </main>
     </ContainerStyled>
