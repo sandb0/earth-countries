@@ -24,6 +24,17 @@ export default createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
   }
 
+  h1 {
+    font-size: 34px;
+    font-weight: 500;
+    letter-spacing: -1px;
+  }
+
+  h4 {
+    font-size: 14px;
+    font-weight: 500;
+  }
+
   :root {
     --primary-color: #000;
   }

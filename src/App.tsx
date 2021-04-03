@@ -1,9 +1,9 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
-import GlobalStyles from './Assets/StyleSheets/GlobalStyles';
+import GlobalStyles from './assets/styleSheets/GlobalStyles';
 
-import { HomePage, SingleCountryPage } from './Pages';
+import { HomePage, SingleCountryPage } from './pages';
 
 const App: React.FC = () => {
   return (
