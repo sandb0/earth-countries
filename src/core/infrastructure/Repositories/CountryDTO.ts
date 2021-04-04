@@ -2,6 +2,10 @@ export type FlagProps = {
   svgFile: string;
 };
 
+export type TopLevelDomainsProps = {
+  name: string;
+};
+
 export type CountryDTO = {
   id: number;
   name: string;
@@ -9,4 +13,5 @@ export type CountryDTO = {
   population: number;
   capital: string;
   flag: FlagProps;
+  topLevelDomains: TopLevelDomainsProps[];
 };

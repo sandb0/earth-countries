@@ -1,6 +1,7 @@
 import {
   CountryDTO,
   FlagProps,
+  TopLevelDomainsProps,
 } from '../infrastructure/Repositories/CountryDTO';
 
 export default class Country {
@@ -10,9 +11,18 @@ export default class Country {
   public population: string;
   public capital: string;
   public flag: FlagProps;
+  public topLevelDomains: TopLevelDomainsProps[];
 
   public constructor(props: CountryDTO) {
-    const { id, name, area, population, capital, flag } = props;
+    const {
+      id,
+      name,
+      area,
+      population,
+      capital,
+      flag,
+      topLevelDomains,
+    } = props;
 
     this.id = id;
     this.name = name;
@@ -26,5 +36,6 @@ export default class Country {
       : 'NULL';
     this.capital = capital;
     this.flag = flag;
+    this.topLevelDomains = topLevelDomains;
   }
 }

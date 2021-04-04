@@ -39,6 +39,11 @@ const EditCountryPage: React.FC<Props> = (props: Props) => {
     area: 0,
     population: 0,
     capital: '',
+    topLevelDomains: [
+      {
+        name: '',
+      },
+    ],
   });
 
   useEffect(() => {
@@ -55,6 +60,7 @@ const EditCountryPage: React.FC<Props> = (props: Props) => {
       area: parseInt(country?.area.split('.').join('')),
       population: parseInt(country?.population.split('.').join('')),
       capital: country?.capital,
+      topLevelDomains: country?.topLevelDomains,
     });
   }, [country]);
 
@@ -82,7 +88,7 @@ const EditCountryPage: React.FC<Props> = (props: Props) => {
           </div>
 
           <div>
-            <p>Nome</p>
+            <p>Nome do país</p>
             <input
               type="text"
               value={form.name}
@@ -93,7 +99,7 @@ const EditCountryPage: React.FC<Props> = (props: Props) => {
           </div>
 
           <div>
-            <p>Área</p>
+            <p>Área do país (m2)</p>
             <input
               type="text"
               value={form.area}
@@ -104,7 +110,7 @@ const EditCountryPage: React.FC<Props> = (props: Props) => {
           </div>
 
           <div>
-            <p>População</p>
+            <p>População do país</p>
             <input
               type="text"
               value={form.population}
@@ -115,12 +121,26 @@ const EditCountryPage: React.FC<Props> = (props: Props) => {
           </div>
 
           <div>
-            <p>Capital</p>
+            <p>Capital do país</p>
             <input
               type="text"
               value={form.capital}
               onChange={(event) =>
                 setForm({ ...form, capital: event.target.value })
+              }
+            />
+          </div>
+
+          <div>
+            <p>Top-Level Domains do país</p>
+            <input
+              type="text"
+              value={form.topLevelDomains[0].name}
+              onChange={(event) =>
+                setForm({
+                  ...form,
+                  topLevelDomains: [{ name: event.target.value }],
+                })
               }
             />
           </div>

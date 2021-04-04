@@ -54,7 +54,8 @@ const SingleCountryPage: React.FC<Props> = (props: Props) => {
           </p>
 
           <p>
-            O domínio mais usado é <span>.com.br</span>
+            O domínio mais usado é{' '}
+            <span>{country?.topLevelDomains[0].name}</span>
           </p>
         </ContentContainerStyled>
 
