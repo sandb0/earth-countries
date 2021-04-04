@@ -19,10 +19,9 @@ const App: React.FC = () => {
             <Route path="/" exact>
               <HomePage presenter={countryPresenter} />
             </Route>
-            <Route
-              path="/country/:countryId"
-              component={SingleCountryPage}
-            ></Route>
+            <Route path="/country/:countryId">
+              <SingleCountryPage presenter={countryPresenter} />
+            </Route>
           </Switch>
         </BrowserRouter>
       </Provider>

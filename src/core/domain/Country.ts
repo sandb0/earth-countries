@@ -6,8 +6,8 @@ import {
 export default class Country {
   public id: number;
   public name: string;
-  public area: number;
-  public population: number;
+  public area: string;
+  public population: string;
   public capital: string;
   public flag: FlagProps;
 
@@ -16,8 +16,14 @@ export default class Country {
 
     this.id = id;
     this.name = name;
-    this.area = area;
-    this.population = population;
+    this.area = area
+      ? area.toLocaleString('pt-BR', { maximumFractionDigits: 2 })
+      : 'NULL';
+    this.population = population
+      ? population.toLocaleString('pt-BR', {
+          maximumFractionDigits: 2,
+        })
+      : 'NULL';
     this.capital = capital;
     this.flag = flag;
   }

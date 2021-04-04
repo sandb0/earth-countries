@@ -24,4 +24,15 @@ export default class CountryService {
       return countries;
     }
   }
+
+  public async findById(countryId: number): Promise<Country> {
+    if (this.localStorageRepository.isAllCountriesWasFetched) {
+      return await this.localStorageRepository.findById(countryId);
+    } else {
+      const country = await this.remoteRepository.findById(countryId);
+      await this.localStorageRepository.save(country);
+
+      return country;
+    }
+  }
 }

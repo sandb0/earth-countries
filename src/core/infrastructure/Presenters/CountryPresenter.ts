@@ -18,4 +18,10 @@ export default class CountryPresenter {
 
     return this.reduxActions.findAll(countries);
   }
+
+  public async findById(countryId: number) {
+    const country = await this.applicationService.findById(countryId);
+
+    return this.reduxActions.findById(country);
+  }
 }

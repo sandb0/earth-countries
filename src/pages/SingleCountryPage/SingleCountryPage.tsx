@@ -1,29 +1,56 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FiEdit } from 'react-icons/fi';
-import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useParams } from 'react-router-dom';
+
+import CountryPresenter from '../../core/infrastructure/Presenters/CountryPresenter';
+import { CountryReduxStore } from '../../core/infrastructure/StateManagers/Redux/CountryRedux';
 
 import { HeaderSection } from '../../design/sections';
 
 import { ContainerStyled, ContentContainerStyled } from './styles';
 
-const SingleCountryPage: React.FC = () => {
+type RouterParamsProps = {
+  countryId?: string;
+};
+
+type Props = {
+  presenter: CountryPresenter;
+};
+
+const SingleCountryPage: React.FC<Props> = (props: Props) => {
+  const { presenter } = props;
+
+  const dispatch = useDispatch();
+  const countries = useSelector(
+    (state: CountryReduxStore) => state.country.countries
+  );
+  const country = countries[0];
+
+  const { countryId } = useParams<RouterParamsProps>();
+
+  useEffect(() => {
+    (async () => {
+      const _countryId = parseInt(countryId ?? '0');
+      dispatch(await presenter.findById(_countryId));
+    })();
+  }, [dispatch]);
+
   return (
     <ContainerStyled>
       <HeaderSection backTo="/" />
 
       <main>
         <ContentContainerStyled>
-          <img
-            alt="Brasil - Brasília"
-            src="https://restcountries.eu/data/ala.svg"
-          />
+          <img alt="Brasil - Brasília" src={`${country.flag.svgFile}`} />
         </ContentContainerStyled>
 
         <ContentContainerStyled>
           <p>
-            O <span>Brasil</span> tem como capital a cidade de{' '}
-            <span>Brasília</span>, uma área de <span>100000m2</span> e uma
-            população de aproximadamente <span>200.000.000</span> de pessoas.
+            O <span>{country.name}</span> tem como capital a cidade de{' '}
+            <span>{country.capital}</span>, uma área de{' '}
+            <span>{country.area}m2</span> e uma população de aproximadamente{' '}
+            <span>{country.population}</span> pessoas.
           </p>
 
           <p>
@@ -32,7 +59,7 @@ const SingleCountryPage: React.FC = () => {
         </ContentContainerStyled>
 
         <ContentContainerStyled>
-          <Link title="Editar este país" to="/country/edit/1">
+          <Link title="Editar este país" to={`/country/edit/${countryId}`}>
             <FiEdit size={20} />
           </Link>
         </ContentContainerStyled>

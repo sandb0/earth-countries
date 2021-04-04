@@ -6,7 +6,7 @@ const initialState: CountryReduxState = {
 
 const countryReducer = (state = initialState, action: CountryReduxAction) => {
   switch (action.type) {
-    case 'FIND_ALL':
+    case 'FIND':
       return {
         ...state,
         countries: action.payload.countries,
