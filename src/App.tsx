@@ -4,7 +4,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import { HomePage, SingleCountryPage } from './pages';
 
-import reduxStore from './frameworks/ReduxStore';
+import reduxStore from './libs/ReduxStore';
 
 import countryPresenter from './core';
 

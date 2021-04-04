@@ -6,8 +6,8 @@ import CountryRepositoryLocalStorage from '../core/infrastructure/Repositories/C
 import CountryRepositoryGraphQL from '../core/infrastructure/Repositories/CountryRepositoryGraphQL';
 import CountryMapper from '../core/infrastructure/Repositories/CountryMapper';
 
-/** Import frameworks */
-import apolloClient from '../frameworks/ApolloClient';
+/** Import libs */
+import apolloClient from '../libs/ApolloClient';
 
 /** Instantiate Country Core */
 const countryMapper = new CountryMapper();
