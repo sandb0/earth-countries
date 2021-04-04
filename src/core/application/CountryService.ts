@@ -1,4 +1,5 @@
 import Country from '../domain/Country';
+import { CountryDTO } from '../infrastructure/Repositories/CountryDTO';
 import CountryRepositoryGraphQL from '../infrastructure/Repositories/CountryRepositoryGraphQL';
 import CountryRepositoryLocalStorage from '../infrastructure/Repositories/CountryRepositoryLocalStorage';
 
@@ -34,5 +35,11 @@ export default class CountryService {
 
       return country;
     }
+  }
+
+  public async save(form: CountryDTO): Promise<Country> {
+    const country = new Country(form);
+    await this.localStorageRepository.save(country);
+    return await this.localStorageRepository.findById(country.id);
   }
 }

@@ -9,6 +9,6 @@ export type CountryReduxState = {
 };
 
 export type CountryReduxAction = {
-  type: 'FIND';
+  type: 'FIND' | 'SAVE';
   payload: CountryReduxState;
 };

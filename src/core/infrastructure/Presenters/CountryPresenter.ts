@@ -1,4 +1,5 @@
 import CountryService from '../../application/CountryService';
+import { CountryDTO } from '../Repositories/CountryDTO';
 import CountryActions from '../StateManagers/Redux/CountryActions';
 
 export default class CountryPresenter {
@@ -23,5 +24,10 @@ export default class CountryPresenter {
     const country = await this.applicationService.findById(countryId);
 
     return this.reduxActions.findById(country);
+  }
+
+  public async save(form: CountryDTO) {
+    const country = await this.applicationService.save(form);
+    return this.reduxActions.save(country);
   }
 }

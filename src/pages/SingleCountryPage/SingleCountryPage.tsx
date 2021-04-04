@@ -42,15 +42,15 @@ const SingleCountryPage: React.FC<Props> = (props: Props) => {
 
       <main>
         <ContentContainerStyled>
-          <img alt="Brasil - Brasília" src={`${country.flag.svgFile}`} />
+          <img alt="Brasil - Brasília" src={`${country?.flag.svgFile}`} />
         </ContentContainerStyled>
 
         <ContentContainerStyled>
           <p>
-            O <span>{country.name}</span> tem como capital a cidade de{' '}
-            <span>{country.capital}</span>, uma área de{' '}
-            <span>{country.area}m2</span> e uma população de aproximadamente{' '}
-            <span>{country.population}</span> pessoas.
+            O <span>{country?.name}</span> tem como capital a cidade de{' '}
+            <span>{country?.capital}</span>, uma área de{' '}
+            <span>{country?.area}m2</span> e uma população de aproximadamente{' '}
+            <span>{country?.population}</span> pessoas.
           </p>
 
           <p>
@@ -59,7 +59,7 @@ const SingleCountryPage: React.FC<Props> = (props: Props) => {
         </ContentContainerStyled>
 
         <ContentContainerStyled>
-          <Link title="Editar este país" to={`/country/edit/${countryId}`}>
+          <Link title="Editar este país" to={`/country/${countryId}/edit`}>
             <FiEdit size={20} />
           </Link>
         </ContentContainerStyled>

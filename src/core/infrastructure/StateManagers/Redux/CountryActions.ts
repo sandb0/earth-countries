@@ -15,4 +15,11 @@ export default class CountryActions {
       payload: { countries: [country] },
     };
   }
+
+  public save(country: Country): CountryReduxAction {
+    return {
+      type: 'SAVE',
+      payload: { countries: [country] },
+    };
+  }
 }
