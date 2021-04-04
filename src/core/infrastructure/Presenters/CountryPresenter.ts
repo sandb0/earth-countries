@@ -26,6 +26,12 @@ export default class CountryPresenter {
     return this.reduxActions.findById(country);
   }
 
+  public async findByName(countryName: string) {
+    const countries = await this.applicationService.findByName(countryName);
+
+    return this.reduxActions.findByName(countries);
+  }
+
   public async save(form: CountryDTO) {
     const country = await this.applicationService.save(form);
     return this.reduxActions.save(country);

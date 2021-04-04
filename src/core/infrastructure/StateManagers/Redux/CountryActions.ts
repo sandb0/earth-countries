@@ -16,6 +16,13 @@ export default class CountryActions {
     };
   }
 
+  public findByName(countries: Country[]): CountryReduxAction {
+    return {
+      type: 'FIND',
+      payload: { countries: countries },
+    };
+  }
+
   public save(country: Country): CountryReduxAction {
     return {
       type: 'SAVE',

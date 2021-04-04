@@ -10,16 +10,18 @@ export const SectionStyled = styled.section`
 `;
 
 export const SearchContainerStyled = styled.div`
-  border: 2px solid var(--primary-color);
-  border-radius: 50px;
-  padding: 15px 30px;
-  display: flex;
-  justify-content: space-between;
-  transition: all 0.3s;
+  form {
+    border: 2px solid var(--primary-color);
+    border-radius: 50px;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    transition: all 0.3s;
 
-  &.onFocus {
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
-    transform: translateY(-2px);
+    &.onFocus {
+      box-shadow: 0 4px 3px rgba(0, 0, 0, 0.3);
+      transform: translateY(-2px);
+    }
   }
 `;
 

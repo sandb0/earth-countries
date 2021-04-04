@@ -44,7 +44,7 @@ const HomePage: React.FC<Props> = (props: Props) => {
       <HeaderSection />
 
       <main>
-        <SearchComponent />
+        <SearchComponent onSubmit={presenter.findByName.bind(presenter)} />
 
         <CardsCountriesContainerStyled>
           {cardsCountriesComponents}
