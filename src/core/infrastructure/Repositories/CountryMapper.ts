@@ -11,6 +11,7 @@ export default class CountryMapper {
         population: country.population,
         flag: country.flag,
         capital: country.capital,
+        topLevelDomains: country.topLevelDomains,
       });
     });
 

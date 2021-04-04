@@ -22,6 +22,7 @@ export default createGlobalStyle`
     font-size: 14px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background-color: var(--background-color);
   }
 
   h1 {
@@ -37,5 +38,6 @@ export default createGlobalStyle`
 
   :root {
     --primary-color: #000;
+    --background-color: #f9f9f9;
   }
 `;

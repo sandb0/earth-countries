@@ -18,15 +18,39 @@ export default class CountryRepositoryLocalStorage {
   }
 
   public async findAll(): Promise<Country[]> {
-    const countriesStringify = this.localStorage.getItem('countries') ?? '';
-    const countriesResponse = JSON.parse(countriesStringify) as CountryDTO[];
+    const storagedCountries = Object.keys(this.localStorage);
+
+    let countriesResponse = storagedCountries.map((storagedCountry) => {
+      const countryStringify = this.localStorage.getItem(storagedCountry) ?? '';
+      return JSON.parse(countryStringify) as CountryDTO;
+    });
+
+    countriesResponse = countriesResponse.sort((a, b) => {
+      return a.id - b.id;
+    });
 
     return this.repositoryMapper.toDomain(countriesResponse);
   }
 
+  public async findById(countryId: number): Promise<Country> {
+    const countryStringify =
+      this.localStorage.getItem(`country_${countryId}`) ?? '';
+    const countryResponse = JSON.parse(countryStringify) as CountryDTO;
+
+    return this.repositoryMapper.toDomain([countryResponse])[0];
+  }
+
   public async saveAll(countries: Country[]): Promise<void> {
-    const countriesStringify = JSON.stringify(countries);
-    this.localStorage.setItem('countries', countriesStringify);
+    countries.forEach((country) => {
+      const countryStringify = JSON.stringify(country);
+      this.localStorage.setItem(`country_${country.id}`, countryStringify);
+    });
+
     this._isAllCountriesWasFetched = true;
+  }
+
+  public async save(country: Country): Promise<void> {
+    const countryStringify = JSON.stringify(country);
+    this.localStorage.setItem(`country_${country.id}`, countryStringify);
   }
 }

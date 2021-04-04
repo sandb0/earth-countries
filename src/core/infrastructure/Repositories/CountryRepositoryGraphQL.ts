@@ -19,7 +19,7 @@ export default class CountryRepositoryGraphQL {
       query: gql`
         {
           Country {
-            id: numericCode
+            id: _id
             name
             area
             population
@@ -42,5 +42,35 @@ export default class CountryRepositoryGraphQL {
     const countriesResponse = response.data.Country as CountryDTO[];
 
     return this.repositoryMapper.toDomain(countriesResponse);
+  }
+
+  public async findById(countryId: number) {
+    const response = await this.apolloClient.query({
+      query: gql`
+        {
+          Country(_id: "${countryId}") {
+            id: _id
+            name
+            area
+            population
+            capital
+            flag {
+              svgFile
+            }
+            location {
+              latitude
+              longitude
+            }
+            topLevelDomains {
+              name
+            }
+          }
+        }
+      `,
+    });
+
+    const countryResponse = response.data.Country as CountryDTO[];
+
+    return this.repositoryMapper.toDomain(countryResponse)[0];
   }
 }
