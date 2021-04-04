@@ -1,17 +1,6 @@
 import { ApolloClient, gql, NormalizedCacheObject } from '@apollo/client';
+import { CountryDTO } from './CountryDTO';
 import CountryMapper from './CountryMapper';
-
-export type FlagProps = {
-  svgFile: string;
-};
-
-export type CountryDTO = {
-  name: string;
-  area: number;
-  population: number;
-  capital: string;
-  flag: FlagProps;
-};
 
 export default class CountryRepositoryGraphQL {
   private apolloClient: ApolloClient<NormalizedCacheObject>;
@@ -50,6 +39,7 @@ export default class CountryRepositoryGraphQL {
     });
 
     const countriesResponse = response.data.Country as CountryDTO[];
+
     return this.repositoryMapper.toDomain(countriesResponse);
   }
 }

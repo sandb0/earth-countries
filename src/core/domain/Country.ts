@@ -1,12 +1,7 @@
-import { FlagProps } from '../infrastructure/Repositories/CountryRepositoryGraphQL';
-
-export type CountryProps = {
-  name: string;
-  area: number;
-  population: number;
-  capital: string;
-  flag: FlagProps;
-};
+import {
+  CountryDTO,
+  FlagProps,
+} from '../infrastructure/Repositories/CountryDTO';
 
 export default class Country {
   public name: string;
@@ -15,7 +10,7 @@ export default class Country {
   public capital: string;
   public flag: FlagProps;
 
-  public constructor(props: CountryProps) {
+  public constructor(props: CountryDTO) {
     const { name, area, population, capital, flag } = props;
 
     this.name = name;

@@ -15,6 +15,7 @@ export default class CountryPresenter {
 
   public async findAll() {
     const countries = await this.applicationService.findAll();
+
     return this.reduxActions.findAll(countries);
   }
 }

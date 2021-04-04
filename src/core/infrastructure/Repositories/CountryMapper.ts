@@ -1,5 +1,5 @@
 import Country from '../../domain/Country';
-import { CountryDTO } from './CountryRepositoryGraphQL';
+import { CountryDTO } from './CountryDTO';
 
 export default class CountryMapper {
   public toDomain(countriesRaw: CountryDTO[]): Country[] {
