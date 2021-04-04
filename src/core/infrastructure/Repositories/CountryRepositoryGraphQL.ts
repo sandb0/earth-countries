@@ -19,6 +19,7 @@ export default class CountryRepositoryGraphQL {
       query: gql`
         {
           Country {
+            id: numericCode
             name
             area
             population

@@ -18,6 +18,11 @@ export const ContainerStyled = styled.div`
   border-radius: 10px;
   transition: all 0.3s;
 
+  a {
+    color: var(--primary-color);
+    text-decoration: none;
+  }
+
   &:hover {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 

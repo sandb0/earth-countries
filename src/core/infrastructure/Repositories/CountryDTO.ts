@@ -3,6 +3,7 @@ export type FlagProps = {
 };
 
 export type CountryDTO = {
+  id: number;
   name: string;
   area: number;
   population: number;

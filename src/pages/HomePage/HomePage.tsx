@@ -31,6 +31,7 @@ const HomePage: React.FC<Props> = (props: Props) => {
     (country: Country, index: number) => (
       <CardCountryComponent
         key={index}
+        id={country.id}
         name={country.name}
         flagSVG={country.flag.svgFile}
         capital={country.capital}

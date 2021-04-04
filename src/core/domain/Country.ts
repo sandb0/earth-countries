@@ -4,6 +4,7 @@ import {
 } from '../infrastructure/Repositories/CountryDTO';
 
 export default class Country {
+  public id: number;
   public name: string;
   public area: number;
   public population: number;
@@ -11,8 +12,9 @@ export default class Country {
   public flag: FlagProps;
 
   public constructor(props: CountryDTO) {
-    const { name, area, population, capital, flag } = props;
+    const { id, name, area, population, capital, flag } = props;
 
+    this.id = id;
     this.name = name;
     this.area = area;
     this.population = population;
