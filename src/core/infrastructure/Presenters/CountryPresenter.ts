@@ -34,6 +34,7 @@ export default class CountryPresenter {
 
   public async save(form: CountryDTO) {
     const country = await this.applicationService.save(form);
+
     return this.reduxActions.save(country);
   }
 }
