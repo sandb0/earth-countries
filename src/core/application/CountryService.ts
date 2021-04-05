@@ -41,9 +41,10 @@ export default class CountryService {
     return await this.localStorageRepository.findByName(countryName);
   }
 
-  public async save(form: CountryDTO): Promise<Country> {
-    const country = new Country(form);
+  public async save(countryData: CountryDTO): Promise<Country> {
+    const country = new Country(countryData);
     await this.localStorageRepository.save(country);
+
     return await this.localStorageRepository.findById(country.id);
   }
 }
