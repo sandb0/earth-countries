@@ -25,7 +25,7 @@ export default class CountryActions {
 
   public save(country: Country): CountryReduxAction {
     return {
-      type: 'SAVE',
+      type: 'FIND',
       payload: { countries: [country] },
     };
   }
