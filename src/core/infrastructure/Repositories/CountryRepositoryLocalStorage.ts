@@ -23,6 +23,7 @@ export default class CountryRepositoryLocalStorage {
     let countriesResponse = storagedCountries.map((storagedCountryId) => {
       const countryStringify =
         this.localStorage.getItem(storagedCountryId) ?? '';
+
       return JSON.parse(countryStringify) as CountryDTO;
     });
 
