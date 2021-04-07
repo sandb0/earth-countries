@@ -4,6 +4,31 @@ orbs:
   heroku: circleci/heroku@0.0.10
 
 jobs:
+  test:
+    working_directory: ~/repo
+    docker:
+      - image: circleci/node:14.16.0
+    steps:
+      - checkout
+      - run:
+          name: Install Dependencies
+          command: yarn
+      - save_cache:
+          key: dependency-cache-{{ checksum "yarn.lock" }}
+          paths:
+            - ./node_modules
+      - run:
+          name: Run TypeScript linting
+          command: yarn lint:tsc
+      - run:
+          name: Run ESLint linting
+          command: yarn lint:eslint
+      - run:
+          name: Run Stylelint linting
+          command: yarn lint:css
+      - run:
+          name: Run tests
+          command: yarn test
   stage:
     executor: heroku/default
     steps:
@@ -22,7 +47,14 @@ jobs:
 workflows:
   stage_test_deploy:
     jobs:
-      - stage
-      - deploy:
+      - test
+      - stage:
+          requires:
+            - test
+      - hold:
+          type: approval
           requires:
             - stage
+      - deploy:
+          requires:
+            - hold
