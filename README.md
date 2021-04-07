@@ -8,6 +8,13 @@
   <img width="550px" src="docs/.assets/images/home-screenshot.png" alt="Earth Countries Home Page" />
 </div>
 
+### Features
+
+- Display a list of countries.
+- Display more information about a country.
+- Edit a country's information and save the changes to LocalStorage.
+- Search (by name) for countries saved in LocalStorage.
+
 > [Staging App](https://earth-countries-staging.herokuapp.com/)
 >
 > [Production App](https://earth-countries-production.herokuapp.com/)
