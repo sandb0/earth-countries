@@ -14,3 +14,4 @@ yarn*
 /.husky
 .editorconfig
 *ignore
+/docs
