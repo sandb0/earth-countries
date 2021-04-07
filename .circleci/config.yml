@@ -1,0 +1,28 @@
+version: 2.1
+
+orbs:
+  heroku: circleci/heroku@0.0.10
+
+jobs:
+  stage:
+    executor: heroku/default
+    steps:
+      - checkout
+      - heroku/install
+      - heroku/deploy-via-git:
+          app-name: $HEROKU_STAGING_APP_NAME
+  deploy:
+    executor: heroku/default
+    steps:
+      - checkout
+      - heroku/install
+      - heroku/deploy-via-git:
+          app-name: $HEROKU_PRODUCTION_APP_NAME
+
+workflows:
+  stage_test_deploy:
+    jobs:
+      - stage
+      - deploy:
+          requires:
+            - stage
